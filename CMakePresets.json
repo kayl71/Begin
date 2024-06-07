@@ -1,0 +1,32 @@
+{
+    "version": 2,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 0,
+        "patch": 0
+    },
+    "configurePresets": [
+        {
+            "name": "TestPresets",
+            "displayName": "Configure preset using toolchain file",
+            "description": "Sets Ninja generator, build and install directory",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/out/${presetName}/build",
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "gcc",
+                "CMAKE_CXX_COMPILER": "g++",
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/${presetName}/install",
+                "CMAKE_RUNTIME_OUTPUT_DIRECTORY": "${sourceDir}/out/${presetName}/app"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "Test",
+            "description": "Сборка используя TestPresets",
+            "displayName": "",
+            "configurePreset": "TestPresets"
+        }
+    ]
+}
